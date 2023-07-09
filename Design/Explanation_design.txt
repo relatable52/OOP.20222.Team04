@@ -6,7 +6,7 @@
 - BoardCell and Stone: composition.
 (The BoardCell class has an ArrayList called stonesInCell, which contains Stone objects.
  Without the Stone class, the BoardCell class cannot function). 
-- Board and BoardCell : composition.
+- Board and BoardCell: composition.
 - Game and Board: composition.
 - Player and Stone: composition.
 
