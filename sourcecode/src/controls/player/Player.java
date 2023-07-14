@@ -1,10 +1,10 @@
-package game.controls.player;
+package controls.player;
 
 import java.util.*;
 import java.util.concurrent.*;
 import java.lang.Math;
 
-import game.controls.board.*;
+import controls.board.*;
 
 public class Player {
 	private ArrayList<Stone> inHand;

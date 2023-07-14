@@ -1,7 +1,7 @@
-package game.controls;
+package controls;
 
-import game.controls.board.*;
-import game.controls.player.Player;
+import controls.board.*;
+import controls.player.Player;
 
 public class Game {
 	private Board myBoard;

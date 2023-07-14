@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.JOptionPane;
 import java.awt.*;
 
-import game.controls.*;
+import controls.*;
 
 public class MainWindow extends JFrame{
 	private GameCanvas myGC;
