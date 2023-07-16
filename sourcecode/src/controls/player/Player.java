@@ -85,7 +85,7 @@ public class Player {
 	
 	public void pickupStones(BoardCell bc){
 		ArrayList<Stone> cur = bc.getStonesInCell();
-		if(bc.isOQuan()) {
+		if(bc instanceof BigBoardCell) {
 			this.curIndex = -1;
 		}
 		else {
