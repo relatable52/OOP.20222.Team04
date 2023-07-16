@@ -78,7 +78,7 @@ public class BoardDrawer extends Drawer {
 	private void drawStones(Graphics2D g) {
 		BoardCell[] cells = this.myBoard.getCells();
 		for(int i = 0; i<12; i++) {
-			if(!cells[i].isOQuan()) {
+			if(!(cells[i] instanceof BigBoardCell)) {
 				drawInDan(g, i, cells[i]);
 			}
 			else {
