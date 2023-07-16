@@ -19,7 +19,7 @@ OOP project - O An Quan game
 3. Dang Manh Cuong (27%)
 - Implements the `board` subpackage in `controls` package
 - Make the detailed class diagram for `controls` package
-- Checking for any necessary bug fixes in the code & clean the diagrams
+- Test the code for bugs  & clean the diagrams
 - Write the report & film the demo video
 
 4. Doan Ngoc Cuong (27%)
