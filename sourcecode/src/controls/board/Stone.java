@@ -6,6 +6,4 @@ public abstract class Stone {
 	public int getValue() {
 		return this.value;
 	}
-	
-	public abstract boolean isQuan();
 }
