@@ -40,8 +40,12 @@ public class Player {
 				releaseStone(cur);
 				break;
 			case 1:
-				pickupStones(cur);
-				break;
+			try {
+				pickupStones((BigBoardCell)cur);
+			}
+			catch (ClassCastException e) {
+				pickupStones((SmallBoardCell)cur);
+			}
 			case 2:
 				takeStonesInNext(next, mc==2);
 				break;
@@ -68,29 +72,28 @@ public class Player {
 	public void raiSoi(Board b) {
 		if(playerId == 1) {
 			for(int i=0; i<5; i++) {
-				b.getCells()[i].getStonesInCell().add(new Stone(false));
+				b.getCells()[i].getStonesInCell().add(new SmallGem());
 			}
 		}
 		if(playerId == 2) {
 			for(int i=6; i<11; i++) {
-				b.getCells()[i].getStonesInCell().add(new Stone(false));
+				b.getCells()[i].getStonesInCell().add(new SmallGem());
 			}
 		}
 		this.penalty ++;
 	}
 	
-	public void pickupStones(BoardCell bc) {
-		ArrayList<Stone> cur = bc.getStonesInCell();
-		if(bc.isOQuan()) {
-			this.curIndex = -1;
-		}
-		else {
-			this.inHand.addAll(cur);
-			cur.clear();
-			this.curIndex = Math.floorMod((curIndex+dir), 12);
-		}
+	public void pickupStones(BigBoardCell bc) {
+		this.curIndex = -1;
 	}
-	
+
+	public void pickupStones(SmallBoardCell bc) {
+		ArrayList<Stone> cur = bc.getStonesInCell();
+		this.inHand.addAll(cur);
+		cur.clear();
+		this.curIndex = Math.floorMod((curIndex+dir), 12);
+	}
+
 	public void releaseStone(BoardCell bc) {
 		//System.out.println(this.inHand.size());
 		if(this.inHand.size()>0) {
