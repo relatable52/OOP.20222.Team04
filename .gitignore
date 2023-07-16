@@ -33,3 +33,4 @@ Temporary Items
 # java/astah specific files
 *.astah.lock
 *.class
+/bin/
