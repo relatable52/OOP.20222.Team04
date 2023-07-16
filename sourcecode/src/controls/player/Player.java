@@ -40,12 +40,13 @@ public class Player {
 				releaseStone(cur);
 				break;
 			case 1:
-			try {
-				pickupStones((BigBoardCell)cur);
-			}
-			catch (ClassCastException e) {
+			if (cur instanceof SmallBoardCell) {
 				pickupStones((SmallBoardCell)cur);
 			}
+			else {
+				pickupStones((BigBoardCell)cur);
+			}
+
 			case 2:
 				takeStonesInNext(next, mc==2);
 				break;
