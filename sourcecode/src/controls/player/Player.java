@@ -10,14 +10,17 @@ public class Player {
 	private ArrayList<Stone> inHand;
 	private ArrayList<Stone> taken;
 	private int playerId;
-	private int dir = -1;
-	private int curIndex = -1;
-	private int penalty = 0;
+	private int dir;
+	private int curIndex;
+	private int penalty;
 	
 	public Player(int id) {
 		this.inHand = new ArrayList<Stone>();
 		this.taken = new ArrayList<Stone>();
 		this.playerId = id;
+		this.dir = -1;
+		this.curIndex = -1;
+		this.penalty = 0;
 	}
 	
 	public void reset() {
@@ -40,8 +43,13 @@ public class Player {
 				releaseStone(cur);
 				break;
 			case 1:
-				pickupStones(cur);
-				break;
+			if (cur instanceof SmallBoardCell) {
+				pickupStones((SmallBoardCell)cur);
+			}
+			else {
+				pickupStones((BigBoardCell)cur);
+			}
+
 			case 2:
 				takeStonesInNext(next, mc==2);
 				break;
@@ -68,29 +76,28 @@ public class Player {
 	public void raiSoi(Board b) {
 		if(playerId == 1) {
 			for(int i=0; i<5; i++) {
-				b.getCells()[i].getStonesInCell().add(new Stone(false));
+				b.getCells()[i].getStonesInCell().add(new SmallGem());
 			}
 		}
 		if(playerId == 2) {
 			for(int i=6; i<11; i++) {
-				b.getCells()[i].getStonesInCell().add(new Stone(false));
+				b.getCells()[i].getStonesInCell().add(new SmallGem());
 			}
 		}
 		this.penalty ++;
 	}
 	
-	public void pickupStones(BoardCell bc) {
-		ArrayList<Stone> cur = bc.getStonesInCell();
-		if(bc.isOQuan()) {
-			this.curIndex = -1;
-		}
-		else {
-			this.inHand.addAll(cur);
-			cur.clear();
-			this.curIndex = Math.floorMod((curIndex+dir), 12);
-		}
+	public void pickupStones(BigBoardCell bc) {
+		this.curIndex = -1;
 	}
-	
+
+	public void pickupStones(SmallBoardCell bc) {
+		ArrayList<Stone> cur = bc.getStonesInCell();
+		this.inHand.addAll(cur);
+		cur.clear();
+		this.curIndex = Math.floorMod((curIndex+dir), 12);
+	}
+
 	public void releaseStone(BoardCell bc) {
 		//System.out.println(this.inHand.size());
 		if(this.inHand.size()>0) {
