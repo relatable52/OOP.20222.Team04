@@ -20,4 +20,6 @@ public abstract class BoardCell {
 		}
 		return point;
 	}
+	
+	public abstract boolean isOQuan();
 }
