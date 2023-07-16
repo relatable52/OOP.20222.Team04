@@ -44,8 +44,14 @@ public class Player {
 				releaseStone(cur);
 				break;
 			case 1:
-				pickupStones(cur);
-				break;
+				if (cur instanceof BigBoardCell) {
+					pickupStones((BigBoardCell)cur);
+					break;
+				}
+				else {
+					pickupStones((SmallBoardCell)cur);
+					break;	
+				}
 			case 2:
 				takeStonesInNext(next, mc==2);
 				break;
@@ -83,28 +89,16 @@ public class Player {
 		this.penalty ++;
 	}
 	
-	public void pickupStones(BoardCell bc){
-		ArrayList<Stone> cur = bc.getStonesInCell();
-		if(bc instanceof BigBoardCell) {
-			this.curIndex = -1;
-		}
-		else {
-			this.inHand.addAll(cur);
-			cur.clear();
-			this.curIndex = Math.floorMod((curIndex+dir), 12);
-		}
+	public void pickupStones(BigBoardCell bc) {
+		this.curIndex = -1;
 	}
-	
-//	public void pickupStones(BigBoardCell bc) {
-//		this.curIndex = -1;
-//	}
-//
-//	public void pickupStones(SmallBoardCell bc) {
-//		ArrayList<Stone> cur = bc.getStonesInCell();
-//		this.inHand.addAll(cur);
-//		cur.clear();
-//		this.curIndex = Math.floorMod((curIndex+dir), 12);
-//	}
+
+	public void pickupStones(SmallBoardCell bc) {
+		ArrayList<Stone> cur = bc.getStonesInCell();
+		this.inHand.addAll(cur);
+		cur.clear();
+		this.curIndex = Math.floorMod((curIndex+dir), 12);
+	}
 
 	public void releaseStone(BoardCell bc) {
 		//System.out.println(this.inHand.size());
