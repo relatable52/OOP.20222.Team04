@@ -1,11 +1,14 @@
 package gui;
 
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
 public class HelpPage extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel content;
 	private JButton back;
 	private MainWindow pa;

@@ -7,6 +7,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class GameCanvas extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private BoardDrawer myBD;
 	private PlayerDrawer myPD;
 	private JButton back;
