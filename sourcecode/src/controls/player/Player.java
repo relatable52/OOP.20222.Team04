@@ -10,14 +10,17 @@ public class Player {
 	private ArrayList<Stone> inHand;
 	private ArrayList<Stone> taken;
 	private int playerId;
-	private int dir = -1;
-	private int curIndex = -1;
-	private int penalty = 0;
+	private int dir;
+	private int curIndex;
+	private int penalty;
 	
 	public Player(int id) {
 		this.inHand = new ArrayList<Stone>();
 		this.taken = new ArrayList<Stone>();
 		this.playerId = id;
+		this.dir = -1;
+		this.curIndex = -1;
+		this.penalty = 0;
 	}
 	
 	public void reset() {
