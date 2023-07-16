@@ -5,6 +5,7 @@ import java.util.concurrent.*;
 import java.lang.Math;
 
 import controls.board.*;
+import controls.board.Stone;
 
 public class Player {
 	private ArrayList<Stone> inHand;
@@ -43,13 +44,8 @@ public class Player {
 				releaseStone(cur);
 				break;
 			case 1:
-			if (cur instanceof SmallBoardCell) {
-				pickupStones((SmallBoardCell)cur);
-			}
-			else {
-				pickupStones((BigBoardCell)cur);
-			}
-
+				pickupStones(cur);
+				break;
 			case 2:
 				takeStonesInNext(next, mc==2);
 				break;
@@ -62,7 +58,7 @@ public class Player {
 			}
 		}
 		try {
-			TimeUnit.MILLISECONDS.sleep(300);
+			TimeUnit.MILLISECONDS.sleep(200);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -87,16 +83,28 @@ public class Player {
 		this.penalty ++;
 	}
 	
-	public void pickupStones(BigBoardCell bc) {
-		this.curIndex = -1;
-	}
-
-	public void pickupStones(SmallBoardCell bc) {
+	public void pickupStones(BoardCell bc){
 		ArrayList<Stone> cur = bc.getStonesInCell();
-		this.inHand.addAll(cur);
-		cur.clear();
-		this.curIndex = Math.floorMod((curIndex+dir), 12);
+		if(bc.isOQuan()) {
+			this.curIndex = -1;
+		}
+		else {
+			this.inHand.addAll(cur);
+			cur.clear();
+			this.curIndex = Math.floorMod((curIndex+dir), 12);
+		}
 	}
+	
+//	public void pickupStones(BigBoardCell bc) {
+//		this.curIndex = -1;
+//	}
+//
+//	public void pickupStones(SmallBoardCell bc) {
+//		ArrayList<Stone> cur = bc.getStonesInCell();
+//		this.inHand.addAll(cur);
+//		cur.clear();
+//		this.curIndex = Math.floorMod((curIndex+dir), 12);
+//	}
 
 	public void releaseStone(BoardCell bc) {
 		//System.out.println(this.inHand.size());
