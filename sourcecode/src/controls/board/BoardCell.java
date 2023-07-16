@@ -2,7 +2,7 @@ package controls.board;
 
 import java.util.*;
 
-public class BoardCell {
+public abstract class BoardCell {
 	protected ArrayList<Stone> stonesInCell;
 	
 	public ArrayList<Stone> getStonesInCell() {
