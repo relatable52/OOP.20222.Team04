@@ -99,7 +99,7 @@ public class BoardDrawer extends Drawer {
 		for(int i=0; i<stones.size(); i++) {
 			Stone s = stones.get(i);
 			int r = this.danRadius;
-			if(s.isQuan()) {
+			if(s instanceof BigGem) {
 				r = this.quanRadius;
 			}
 			g.drawOval((int)(centerX + ((i%side)-(side*0.5-0.5))*d) - r/2, (int)(centerY - ((i/side)-(side*0.5-0.5))*d) - r/2, r, r);
@@ -120,7 +120,7 @@ public class BoardDrawer extends Drawer {
 		for(int i=0; i<num; i++) {
 			Stone s = stones.get(i);
 			int r = this.danRadius;
-			if(s.isQuan()) {
+			if(s instanceof BigGem) {
 				r = this.quanRadius;
 			}
 			g.drawOval((int)(centerX - ord*((i%side)-(side*0.5-0.5))*d) - r/2, (int)(centerY - ((i/side)-(side*0.75-0.5))*d) - r/2, r, r);
