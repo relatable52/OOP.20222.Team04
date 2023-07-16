@@ -5,6 +5,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class MainMenu extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton start;
 	private JButton help;
 	private JButton exit;

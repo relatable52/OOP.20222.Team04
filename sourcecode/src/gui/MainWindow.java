@@ -7,6 +7,10 @@ import java.awt.*;
 import controls.*;
 
 public class MainWindow extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private GameCanvas myGC;
 	private MainMenu myMenu;
 	private HelpPage myHelp;
