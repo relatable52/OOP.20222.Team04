@@ -7,10 +7,10 @@ public class Board {
 		cells = new BoardCell[12];
 		for(int i = 0; i<12; i++) {
 			if ((i == 5) || (i==11)) {
-				this.cells[i] = new BoardCell(new BigGem());
+				this.cells[i] = new BigBoardCell();
 			}
 			else {
-				this.cells[i] = new BoardCell(new SmallGem());	
+				this.cells[i] = new SmallBoardCell();	
 			}
 		}
 	}
@@ -19,10 +19,10 @@ public class Board {
 		cells = new BoardCell[12];
 		for(int i = 0; i<12; i++) {
 			if ((i == 5) || (i==11)) {
-				this.cells[i] = new BoardCell(new BigGem());
+				this.cells[i] = new BigBoardCell();
 			}
 			else {
-				this.cells[i] = new BoardCell(new SmallGem());	
+				this.cells[i] = new SmallBoardCell();	
 			}
 		}
 	}
