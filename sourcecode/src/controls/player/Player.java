@@ -64,7 +64,7 @@ public class Player {
 			}
 		}
 		try {
-			TimeUnit.MILLISECONDS.sleep(200);
+			TimeUnit.MILLISECONDS.sleep(500);
 		}
 		catch(Exception e) {
 			e.printStackTrace();

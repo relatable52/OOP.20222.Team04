@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -9,13 +10,14 @@ public class HelpPage extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JLabel content;
-	private JButton back;
 	private MainWindow pa;
+	private BackGroundDrawer bg;
+	private JPanel pane;
 	
 	public HelpPage(MainWindow m) {
 		this.pa = m;
-		this.content = new JLabel("<html>"
+		this.bg = new BackGroundDrawer(this);
+		JLabel content = new JLabel("<html>"
 				+ "<h1>How to play</h1>"
 				+ "<p>"
 				+ "Hover the cursor over one of five square in your side.<br>"
@@ -32,9 +34,9 @@ public class HelpPage extends JPanel{
 				+ "Bạn click chuột để thực hiện nước đi của mình.<br>"
 				+ "Trò chơi kết thúc khi hai ô quan đã được ăn hết.<br>"
 				+ "</html>");
-		this.content.setBorder(new EmptyBorder(50, 50, 50, 50));
+		content.setBorder(new EmptyBorder(50, 50, 50, 50));
 		
-		this.back = new JButton("Back");
+		JButton back = new JButton("Back");
 		ActionListener goBack = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -42,13 +44,26 @@ public class HelpPage extends JPanel{
 				//System.out.println("2");
 			}
 		};
-		this.back.addActionListener(goBack);
+		back.addActionListener(goBack);
 		
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		this.content.setAlignmentX(CENTER_ALIGNMENT);
-		this.back.setAlignmentX(CENTER_ALIGNMENT);
+		content.setAlignmentX(CENTER_ALIGNMENT);
+		back.setAlignmentX(CENTER_ALIGNMENT);	
 		
-		add(this.content);
-		add(this.back);
+		pane = new JPanel();
+		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+		pane.add(content);
+		pane.add(back);
+		pane.setOpaque(false);
+		
+		setLayout(new FlowLayout());
+		add(pane);
+	}
+	
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		
+		this.bg.setMyG(g);
+		this.bg.draw();
 	}
 }

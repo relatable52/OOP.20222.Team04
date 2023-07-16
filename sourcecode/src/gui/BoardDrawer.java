@@ -13,8 +13,8 @@ public class BoardDrawer extends Drawer {
 	private Board myBoard;
 	private Game myGame;
 	private int cellSize = 100;
-	private int danRadius = 5;
-	private int quanRadius = 15;
+	private int danRadius = 10;
+	private int quanRadius = 20;
 	
 	public BoardDrawer(Board myBoard, JPanel cp) {
 		super(cp);
@@ -49,6 +49,10 @@ public class BoardDrawer extends Drawer {
 	
 	public void draw() {
 		Graphics2D graphic2d = (Graphics2D) this.myG;
+		
+		//graphic2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		//graphic2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+		
 		setup(graphic2d);
 		drawBoardLines(graphic2d);
 		drawStones(graphic2d);
@@ -59,13 +63,13 @@ public class BoardDrawer extends Drawer {
 	}
 	
 	public void setup(Graphics2D g) {
-		g.clearRect(0, 0, width, height);
-		g.setStroke(new BasicStroke(5));
+		//g.clearRect(0, 0, width, height);
+		g.setStroke(new BasicStroke(7));
 		g.setFont(new Font("SansSerif", Font.BOLD, 20));
 	}
 	
 	private void drawBoardLines(Graphics2D g) {
-		g.setColor(Color.BLACK);
+		g.setColor(Color.YELLOW);
 		for(int i = 0; i<10; i++) {
 			int x = getWidth()/2 - (5*this.cellSize)/2 + (i%5)*this.cellSize;
 			int y = getHeight()/2 - this.cellSize + (i/5)*this.cellSize;
@@ -88,7 +92,7 @@ public class BoardDrawer extends Drawer {
 	}
 	
 	private void drawInDan(Graphics2D g, int ind, BoardCell cell) {
-		g.setColor(Color.BLACK);
+		g.setColor(new Color(80, 80, 80));
 		ArrayList<Stone> stones = cell.getStonesInCell();
 		int ord = (ind<5)?ind:(5+(9-(ind-1)));
 		int num = stones.size();
@@ -102,14 +106,14 @@ public class BoardDrawer extends Drawer {
 			if(s instanceof BigGem) {
 				r = this.quanRadius;
 			}
-			g.drawOval((int)(centerX + ((i%side)-(side*0.5-0.5))*d) - r/2, (int)(centerY - ((i/side)-(side*0.5-0.5))*d) - r/2, r, r);
+			g.fillOval((int)(centerX + ((i%side)-(side*0.5-0.5))*d) - r/2, (int)(centerY - ((i/side)-(side*0.5-0.5))*d) - r/2, r, r);
 		}
 		g.setColor(new Color(150, 150, 150));
 		g.drawString(cell.getPoint()+"", centerX - this.cellSize*9/20, centerY + this.cellSize*9/20);
 	}
 	
 	private void drawInQuan(Graphics2D g, int ind, BoardCell cell) {
-		g.setColor(Color.BLACK);
+		g.setColor(new Color(80, 80, 80));
 		ArrayList<Stone> stones = cell.getStonesInCell();
 		int ord = (ind > 5) ? (-1):(1);
 		int num = stones.size();
@@ -123,7 +127,7 @@ public class BoardDrawer extends Drawer {
 			if(s instanceof BigGem) {
 				r = this.quanRadius;
 			}
-			g.drawOval((int)(centerX - ord*((i%side)-(side*0.5-0.5))*d) - r/2, (int)(centerY - ((i/side)-(side*0.75-0.5))*d) - r/2, r, r);
+			g.fillOval((int)(centerX - ord*((i%side)-(side*0.5-0.5))*d) - r/2, (int)(centerY - ((i/side)-(side*0.75-0.5))*d) - r/2, r, r);
 		}
 		g.setColor(new Color(150, 150, 150));
 		g.drawString(cell.getPoint()+"", centerX - ord*this.cellSize/5 - (cell.getPoint()+"").length()*5, centerY + ord*this.cellSize*8/10 + 10);

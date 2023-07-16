@@ -22,7 +22,7 @@ public class PlayerDrawer extends Drawer{
 	}
 	
 	public void setup(Graphics2D g) {
-		g.setStroke(new BasicStroke(5));
+		g.setStroke(new BasicStroke(7));
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("SansSerif", Font.BOLD, 30));
 	}
@@ -32,6 +32,8 @@ public class PlayerDrawer extends Drawer{
 		String p1 = this.myGame.getPlayer1().getPoint()+"";
 		String p2 = this.myGame.getPlayer2().getPoint()+"";
 		
+		g.setColor(new Color(220, 20, 20));
+		
 		g.drawRect(width/2 - d/2, 0, d, d*4/5);
 		g.drawString("Player 2", width/2 - metrics.stringWidth("Player 2")/2, d/5+metrics.getHeight()/4);
 		g.drawString(p1, width/2 - metrics.stringWidth(p1)/2, d/2+metrics.getHeight()/4);
@@ -39,8 +41,8 @@ public class PlayerDrawer extends Drawer{
 		g.drawString("Player 1", width/2 - metrics.stringWidth("Player 1")/2, height-d/5+metrics.getHeight()/4);
 		g.drawString(p2, width/2 - metrics.stringWidth(p2)/2, height-d/2+metrics.getHeight()/4);
 		
-		g.setColor(Color.MAGENTA);
-		g.setFont(new Font("SansSerif", Font.BOLD, 20));
+		g.setColor(new Color(255, 255, 50));
+		//g.setFont(new Font("SansSerif", Font.BOLD, 20));
 		if(!this.myGame.gameEnd()) {
 			if(this.myGame.isP1Turn()) {
 				g.drawRect(width/2 - d/2, 0, d, d*4/5);

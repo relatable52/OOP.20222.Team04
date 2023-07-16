@@ -4,6 +4,10 @@ import controls.board.*;
 import controls.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class GameCanvas extends JPanel{
@@ -16,6 +20,7 @@ public class GameCanvas extends JPanel{
 	private JButton back;
 	private JPanel p;
 	private MainWindow pa;
+	private BackGroundDrawer bg;
 	
 	public GameCanvas(Board myBoard) {
 		this.myBD = new BoardDrawer(myBoard, this);
@@ -24,6 +29,7 @@ public class GameCanvas extends JPanel{
 		this.pa = pa;
 		this.myBD = new BoardDrawer(myGame, this);
 		this.myPD = new PlayerDrawer(myGame, this);
+		this.bg = new BackGroundDrawer(this);
 		
 		ActionListener goBack = new ActionListener() {
 			@Override
@@ -52,11 +58,13 @@ public class GameCanvas extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		((Graphics2D)g).setBackground(new Color(238, 238, 238));
+		this.setBackground(new Color(0,0,0,0));
 		
 		this.myBD.setMyG(g);
 		this.myPD.setMyG(g);
+		this.bg.setMyG(g);
 		
+		this.bg.draw();
 		this.myBD.draw();
 		this.myPD.draw();
 

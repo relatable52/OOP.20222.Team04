@@ -33,6 +33,8 @@ public class Drawer implements MouseListener, MouseMotionListener{
 		this.width = (int)r.getWidth();
 	}
 	
+	public void draw() {}
+	
 	public int getWidth() {
 		return this.width;
 	}

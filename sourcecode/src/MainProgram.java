@@ -12,7 +12,7 @@ public class MainProgram {
 				myWindow.redraw();
 				myWindow.playGame();
 			}
-			for(int i=0; i<500000; i++) {}
+			for(int i=0; i<1000000; i++) {}
 		}
 	}
 }
