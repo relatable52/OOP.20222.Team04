@@ -74,3 +74,5 @@ public class MainWindow extends JFrame{
 		return mode;
 	}
 }
+
+

@@ -96,3 +96,5 @@ public class MainMenu extends JPanel{
 		bg.draw();
 	}
 }
+
+

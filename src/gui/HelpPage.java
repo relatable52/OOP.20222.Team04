@@ -67,3 +67,5 @@ public class HelpPage extends JPanel{
 		this.bg.draw();
 	}
 }
+
+
